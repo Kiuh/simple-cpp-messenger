@@ -1,2 +1,2 @@
 # simple-cpp-messenger
-To setup - run bootstrap.sh and build cmake root project
+To setup - build cmake root project and run server.exe and client.exe

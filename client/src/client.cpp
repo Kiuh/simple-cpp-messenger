@@ -1,7 +1,10 @@
-#include <iostream>
+#include "application.cpp"
+
+using namespace client;
 
 int main()
 {
-    std::cout << "client";
+    auto app = new Application();
+    app->run();
     return 0;
 }

@@ -4,7 +4,7 @@ using namespace server;
 
 int main()
 {
-	Application *app = new Application();
+	auto app = new Application();
 	app->run();
 	return 0;
 }
