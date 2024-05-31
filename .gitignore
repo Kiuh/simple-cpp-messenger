@@ -1,6 +1,5 @@
-# Visual Studio directries
-.vs
-out
+# CMake
+build
 
 # Prerequisites
 *.d

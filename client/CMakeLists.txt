@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.8)
-set(PROJECT_NAME server)
+set(PROJECT_NAME client)
 
 project(${PROJECT_NAME})
 
