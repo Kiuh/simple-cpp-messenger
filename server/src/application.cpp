@@ -1,8 +1,13 @@
 #include <boost/asio.hpp>
+#include <boost/asio/ts/buffer.hpp>
+#include <boost/asio/ts/internet.hpp>
 #include <iostream>
+#include <string>
 
+using namespace boost;
 using namespace boost::asio;
-using ip::tcp;
+using namespace boost::asio::ip;
+using namespace std;
 
 namespace server
 {
@@ -11,17 +16,29 @@ namespace server
 	public:
 		void run()
 		{
-			io_service io_service;
-			tcp::acceptor acceptor(io_service, tcp::endpoint(tcp::v4(), 12345));
+			string addr = "";
+			cout << "Enter addr: ";
+			cin >> addr;
+			int port = 0;
+			cout << "Enter port: ";
+			cin >> port;
 
-			while (true)
+			system::error_code ec;
+
+			io_context context;
+			tcp::endpoint endpoint(make_address_v4(addr, ec), port);
+
+			tcp::socket socket(context);
+
+			socket.connect(endpoint, ec);
+
+			if (!ec)
 			{
-				tcp::socket socket(io_service);
-				acceptor.accept(socket);
-
-				std::string message = "Hello from server!";
-				boost::system::error_code ignored_error;
-				boost::asio::write(socket, buffer(message), ignored_error);
+				cout << "Connected";
+			}
+			else
+			{
+				cout << "Failed to connect! " << ec.message() << endl;
 			}
 		}
 	};
